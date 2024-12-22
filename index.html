@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="pokeApi.css">
+</head>
+<body>
+    <div id="search"><input type="text" id="pokeInput" placeholder="Search by name or id">
+    <button type="submit" onclick="getData()">Search</button>
+    </div>
+    <div id="container">
+        <div id="pokeData">
+            <h2 id="pokeName"></h2>
+            <img src="" alt="pokemon img" id="pokemonSprite" style="display:none">
+            
+        </div>
+        
+    </div>
+    <hr>
+    <div id="info">
+        <div id="typeInfo">
+        <ul id="type"></ul>
+        <ul id="height"></ul>
+        <ul id="weight"></ul>
+        </div>
+        <div id="stats">
+            <ul id="stats" style="display:none">
+                <h2>Stats</h2>
+            </ul>
+        </div>
+    </div>
+    <!-- <ul id="emptyList">
+    </ul> -->
+    <!-- <div id="movesDiv">
+    <h2 id="moves" style="display:none">Moves</h2>
+    <ul id="emptyList">
+    </ul>
+    </div> -->
+    <script src="pokeApi.js"></script>
+</body>
+</html>

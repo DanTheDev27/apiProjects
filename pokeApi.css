@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap');
+body{
+    background-color: lightgray;
+    font-family: "Atma", serif;
+}
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* height: 10vh;*/
+    width: 60vw;
+    /* border: solid 1px; */
+    margin: auto;
+    text-align: center;
+
+} 
+#type {
+    width: auto;
+}
+#info {
+    display: flex;
+    justify-content: space-evenly;
+}
+#pokeData{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    /* margin: 0px; */
+    /* padding: 0; */
+    text-align: center;
+    /* transform: translateY(15%) */
+}
+
+#pokemonSprite {
+    max-height: 500px;
+}
+#search{
+    margin-bottom: 20px;
+}
+
+#stats{
+    list-style-type: none;
+    padding:0;
+}
+
+#emptyList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* justify-content: space-evenly; */
+    text-align: center;
+    list-style-type: none;
+    width: 60vw;
+    height: 100%;
+    margin: auto;
+    /* border: solid 1px; */
+    padding: 0px;
+    /* transform: translateY(6%) */
+}
+li{
+    padding-bottom: 8px;
+}
+#movesDiv{
+    text-align: center;
+    /* transform: translateY(300%); */
+    /* border: solid 1px; */
+    width: fit-content;
+    margin: auto;
+    /* padding-top: 50px; */
+}
+
+#search {
+    text-align: center;
+    transform: translateY(40px);
+}
+
+#type {
+    text-align: center;
+    padding:0;
+    list-style-type: none;
+    margin-top: 0px;
+}
+#typeInfo, #stats {
+    margin-top: 25px;
+}
+
+
+@media screen and (max-device-width: 800px) {
+    
+    #container{
+        width: 90vw;
+        gap: 3em;
+    }
+    li{
+        height:fit-content;
+    }
+    #movesDiv{
+        height: fit-content;
+        width: fit-content
+    }
+    #pokemonSprite {
+        max-height: 350px;
+    }
+    #stats {
+        width: auto;
+    }
+    
+}
