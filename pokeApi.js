@@ -28,10 +28,10 @@ async function getData() {
         for(let obj of data.types) {
             console.log('pokemon type: ' + obj.type.name);
             // pokeType.innerHTML= `<h1>${obj.type.name}</h1>`;
-            const li = document.createElement('li');
+            const h3 = document.createElement('h3');
             const itmText = 'Type: ' + obj.type.name.charAt(0).toUpperCase() + obj.type.name.slice(1);
-            li.textContent = itmText;
-            pokeType.appendChild(li);
+            h3.textContent = itmText;
+            pokeType.appendChild(h3);
 
         }
 
@@ -40,8 +40,8 @@ async function getData() {
         let weight = data.weight;
         let floatWeight = weight / 10;
         let floatHeight = height / 10;
-        pokeHeight.innerHTML = `<li>Height: ${floatHeight} m</li>`;
-        pokeWeight.innerHTML = `<li>Weight: ${floatWeight} kg</li>`;
+        pokeHeight.innerHTML = `<h3>Height: ${floatHeight} m</h3>`;
+        pokeWeight.innerHTML = `<h3>Weight: ${floatWeight} kg</h3>`;
 
         //commented out pokemon moves
 
@@ -56,7 +56,7 @@ async function getData() {
 
         for(let stat of data.stats){
             console.log(`stats \n${pokeName} stat: ${stat.base_stat} ${stat.stat.name}`)
-            var list = document.createElement('li');
+            var list = document.createElement('h3');
             const itmText= `${stat.stat.name.charAt(0).toUpperCase()+ stat.stat.name.slice(1)}: ${stat.base_stat}  `;
             list.textContent=itmText;
             statsList.appendChild(list);

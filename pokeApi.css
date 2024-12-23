@@ -83,6 +83,10 @@ li{
 #typeInfo, #stats {
     margin-top: 25px;
 }
+ul#height, ul#weight {
+    padding: 0;
+    text-align: center;
+}
 
 
 @media screen and (max-device-width: 800px) {
@@ -104,5 +108,8 @@ li{
     #stats {
         width: auto;
     }
-    
+    /* ul#height, ul#weight {
+        padding: 0;
+        text-align: center;
+    } */
 }
