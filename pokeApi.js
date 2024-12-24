@@ -1,4 +1,9 @@
-
+let searchBtn = document.getElementById('pokeInput');
+searchBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        getData();
+    }
+})
 getData();
 async function getData() {
     try {
