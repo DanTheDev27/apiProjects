@@ -1,3 +1,4 @@
+// enter key functionality
 let searchBtn = document.getElementById('pokeInput');
 searchBtn.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -20,25 +21,104 @@ async function getData() {
 
         const data = await response.json();
         const pokeName = data.name;
-        console.log("name is " + pokeName);
-        console.log(data);
+        // console.log("name is " + pokeName);
+        // console.log(data);
         const pokeSprite = data.sprites.other['official-artwork'].front_default;
         const ul = document.getElementById('emptyList');
         const statsList = document.getElementById('stats');
         const pokeType = document.getElementById('type');
+        const pokeWeakness = document.getElementById('weakness')
         const pokeHeight = document.getElementById('height');
         const pokeWeight = document.getElementById('weight');
 
         // loop through types to get pokemon type data
         for(let obj of data.types) {
-            console.log('pokemon type: ' + obj.type.name);
+            // console.log('pokemon type: ' + obj.type.name);
             // pokeType.innerHTML= `<h1>${obj.type.name}</h1>`;
             const h3 = document.createElement('h3');
             const itmText = 'Type: ' + obj.type.name.charAt(0).toUpperCase() + obj.type.name.slice(1);
             h3.textContent = itmText;
             pokeType.appendChild(h3);
+            var allType = obj.type.url
+            
+            console.log('all type: ' + allType)
+            fetch(allType)
+        .then(response => {
+            if(!response.ok) {
+                throw new Error('network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            let damageData = data.damage_relations.double_damage_from;
+            // console.log(`${pokeName}'s weakness is ` + data.damage_relations.double_damage_from[0].name);
+            // console.log(damageData);
+            for(let weakness of damageData) {
+                // console.log('all types ' + allType);
+                console.log(`${pokeName}'s weakness is ${weakness.name}`);
+                const h3 = document.createElement('h3');
+                // console.log(weakness)
+                const weaknessText = 'Weaknesses: ' + weakness.name.charAt(0).toUpperCase() + weakness.name.slice(1);
+                h3.textContent = weaknessText;
+                pokeWeakness.appendChild(h3);
+                
+            }
 
+        })
+        .catch(error => {
+            console.log('there was a problem with the fetch op', error);
+        })
+            
         }
+        
+        // loop through weakness and strength of types
+        const typeUrl = data.types[0].type.url;
+        // console.log('types url ' + allType);
+        // console.log(dataFromTypeUrl)
+        // fetch(allType)
+        // .then(response => {
+        //     if(!response.ok) {
+        //         throw new Error('network response was not ok');
+        //     }
+        //     return response.json();
+        // })
+        // .then(data => {
+        //     let damageData = data.damage_relations.double_damage_from;
+        //     // console.log(`${pokeName}'s weakness is ` + data.damage_relations.double_damage_from[0].name);
+        //     // console.log(damageData);
+        //     for(let weakness of damageData) {
+        //         // console.log('all types ' + allType);
+        //         console.log(`${pokeName}'s weakness is ${weakness.name}`);
+        //         const h3 = document.createElement('h3');
+        //         // console.log(weakness)
+        //         const weaknessText = 'Weakness: ' + weakness.name.charAt(0).toUpperCase() + weakness.name.slice(1);
+        //         h3.textContent = weaknessText;
+        //         pokeWeakness.appendChild(h3);
+                
+        //     }
+
+        // })
+        // .catch(error => {
+        //     console.log('there was a problem with the fetch op', error);
+        // })
+        // fetch('https://pokeapi.co/api/v2/type/13/')
+        // .then(response => {
+        //     if(!response.ok) {
+        //         throw new Error('network response was not ok');
+        //     }
+        //     return response.json();
+        // })
+        // .then(data => {
+            
+        //     console.log(`Pokemon's weakness is ` + data.damage_relations.double_damage_from[0].name);
+        //     const h3 = document.createElement('h3');
+        //     const itmText = 'Weakness: ' + data.damage_relations.double_damage_from[0].name.charAt(0).toUpperCase() + data.damage_relations.double_damage_from[0].name.slice(1);
+        //     h3.textContent = itmText;
+        //     pokeWeakness.appendChild(h3)
+        // })
+        // .catch(error => {
+        //     console.error('there was a problem with the fetch operation', error);
+        // })
 
         //pokemon height and weight
         let height = data.height;
@@ -60,7 +140,6 @@ async function getData() {
         //     };
 
         for(let stat of data.stats){
-            console.log(`stats \n${pokeName} stat: ${stat.base_stat} ${stat.stat.name}`)
             var list = document.createElement('h3');
             const itmText= `${stat.stat.name.charAt(0).toUpperCase()+ stat.stat.name.slice(1)}: ${stat.base_stat}  `;
             list.textContent=itmText;
@@ -94,10 +173,12 @@ async function getData() {
     catch(error){
         console.log(error);
     }
+    
 }
 function clearPreviousData() {
     // Clear old type data
     document.getElementById('type').innerHTML = '';
+    document.getElementById('weakness').innerHTML = '';
     
     // Clear old height and weight data
     document.getElementById('height').innerHTML = '';
@@ -113,4 +194,5 @@ function clearPreviousData() {
     const pokemonSprite = document.getElementById('pokemonSprite');
     pokemonSprite.style.display = 'none';  // Hide old sprite
     pokemonSprite.src = '';  // Clear the sprite src
+
 }
