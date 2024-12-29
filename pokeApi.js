@@ -11,6 +11,7 @@ async function getData() {
         const pokemonName = document.getElementById('pokeInput').value.toLowerCase();
         if(pokemonName == ""){
             preventDefault();
+
         }else{
             clearPreviousData();
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
@@ -36,7 +37,7 @@ async function getData() {
             // console.log('pokemon type: ' + obj.type.name);
             // pokeType.innerHTML= `<h1>${obj.type.name}</h1>`;
             const h3 = document.createElement('h3');
-            const itmText = 'Type: ' + obj.type.name.charAt(0).toUpperCase() + obj.type.name.slice(1);
+            const itmText = obj.type.name.charAt(0).toUpperCase() + obj.type.name.slice(1);
             h3.textContent = itmText;
             pokeType.appendChild(h3);
             var allType = obj.type.url
@@ -54,10 +55,8 @@ async function getData() {
             // console.log(`${pokeName}'s weakness is ` + data.damage_relations.double_damage_from[0].name);
             // console.log(damageData);
             for(let weakness of damageData) {
-                // console.log('all types ' + allType);
                 console.log(`${pokeName}'s weakness is ${weakness.name}`);
                 const h3 = document.createElement('h3');
-                // console.log(weakness)
                 const weaknessText = 'Weaknesses: ' + weakness.name.charAt(0).toUpperCase() + weakness.name.slice(1);
                 h3.textContent = weaknessText;
                 pokeWeakness.appendChild(h3);
@@ -139,6 +138,7 @@ async function getData() {
         //         document.getElementById('moves').style.display='block';
         //     };
 
+        // stats
         for(let stat of data.stats){
             var list = document.createElement('h3');
             const itmText= `${stat.stat.name.charAt(0).toUpperCase()+ stat.stat.name.slice(1)}: ${stat.base_stat}  `;
@@ -149,7 +149,6 @@ async function getData() {
         
         //display pokemon data and sprite
         let num = data.id;
-        // let paddedNum = num <100 ? '00' + num : num.toString();
         let paddedId;
         if (num  < 10) {
             paddedId = '000' + num;
@@ -168,6 +167,7 @@ async function getData() {
         const pokemonSprite = document.getElementById('pokemonSprite');
         pokemonSprite.src= pokeSprite;
         pokemonSprite.style.display= 'block';
+
 
     }}
     catch(error){
@@ -194,5 +194,6 @@ function clearPreviousData() {
     const pokemonSprite = document.getElementById('pokemonSprite');
     pokemonSprite.style.display = 'none';  // Hide old sprite
     pokemonSprite.src = '';  // Clear the sprite src
+    
 
 }
