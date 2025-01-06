@@ -41,6 +41,8 @@ async function getData() {
             h3.textContent = itmText;
             pokeType.appendChild(h3);
             var allType = obj.type.url
+            document.getElementById('type').style.display = 'block';
+            document.getElementById('typeDisplay').style.display = 'block'
             
             console.log('all type: ' + allType)
             fetch(allType)
@@ -57,7 +59,7 @@ async function getData() {
             for(let weakness of damageData) {
                 console.log(`${pokeName}'s weakness is ${weakness.name}`);
                 const h3 = document.createElement('h3');
-                const weaknessText = 'Weaknesses: ' + weakness.name.charAt(0).toUpperCase() + weakness.name.slice(1);
+                const weaknessText =  weakness.name.charAt(0).toUpperCase() + weakness.name.slice(1);
                 h3.textContent = weaknessText;
                 pokeWeakness.appendChild(h3);
                 
@@ -126,6 +128,7 @@ async function getData() {
         let floatHeight = height / 10;
         pokeHeight.innerHTML = `<h3>Height: ${floatHeight} m</h3>`;
         pokeWeight.innerHTML = `<h3>Weight: ${floatWeight} kg</h3>`;
+        
 
         //commented out pokemon moves
 

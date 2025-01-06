@@ -117,6 +117,10 @@ ul#height, ul#weight {
     padding:0;
 }
 
+h3 {
+    padding:10px
+}
+
 
 @media screen and (max-device-width: 800px) {
     
@@ -136,11 +140,12 @@ ul#height, ul#weight {
     }
     #stats {
         width: fit-content;
-        height: fit-content;
+        height: max-content;
     }
     #typeInfo {
-        width: auto;
+        max-width: 210px;
         text-wrap: wrap;
-        height:fit-content;
+        height:max-content;
     }
+    
 }
