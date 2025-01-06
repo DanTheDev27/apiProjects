@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="pokeApi.css">
 </head>
 <body>
+    <h1 id="pageTitle">Pokemon Data</h1>
     <div id="search"><input type="text" id="pokeInput" placeholder="Search by name or id">
     <button id="searchBtn" type="submit" onclick="getData()">Search</button>
     </div>
@@ -20,11 +21,11 @@
     </div>
     <!-- <hr id="hrDivider"> -->
     <div id="info">
-        <div>
+        <div id="typeInfo">
             
             <div id="typeInfo">
-                <h2>Type</h2>
-                <ul id="type"></ul>
+                <h2 id="type" style="display:none;">Type</h2>
+                <ul id="type" style="display:none"></ul>
             </div>
         <!-- <ul id="type"></ul> -->
         <ul id="weakness"></ul>
