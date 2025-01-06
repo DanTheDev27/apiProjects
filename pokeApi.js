@@ -62,6 +62,7 @@ async function getData() {
                 const weaknessText =  weakness.name.charAt(0).toUpperCase() + weakness.name.slice(1);
                 h3.textContent = weaknessText;
                 pokeWeakness.appendChild(h3);
+                document.getElementById('typeWeakness').style.display = 'block';
                 
             }
 
