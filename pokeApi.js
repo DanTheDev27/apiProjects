@@ -42,7 +42,8 @@ async function getData() {
             pokeType.appendChild(h3);
             var allType = obj.type.url
             document.getElementById('type').style.display = 'block';
-            document.getElementById('typeDisplay').style.display = 'block'
+            document.getElementById('typeDisplay').style.display = 'block';
+            document.getElementById('typeInfo').style.display = 'block'
             
             console.log('all type: ' + allType)
             fetch(allType)
@@ -127,8 +128,21 @@ async function getData() {
         let weight = data.weight;
         let floatWeight = weight / 10;
         let floatHeight = height / 10;
-        pokeHeight.innerHTML = `<h3>Height: ${floatHeight} m</h3>`;
-        pokeWeight.innerHTML = `<h3>Weight: ${floatWeight} kg</h3>`;
+        pokeHeight.innerHTML = `<h3>${floatHeight} m</h3>`;
+        pokeWeight.innerHTML = `<h3>${floatWeight} kg</h3>`;
+        if (height) {
+            document.getElementById('heightStat').style.display = 'block';
+        } else {
+            document.getElementById('heightStat').style.display = 'none';
+            document.getElementById('height').style.display = 'none';
+        };
+        if (weight) {
+            document.getElementById('weightStat').style.display = 'block';
+        } else {
+            document.getElementById('weightStat').style.display = 'none';
+        };
+
+        
         
 
         //commented out pokemon moves

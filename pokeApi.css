@@ -44,18 +44,16 @@ body{
     background: #2f2f2f90;
     border-radius: 35px;
 }
-#search{
-    margin-bottom: 20px;
-}
 
 #stats{
     list-style-type: none;
     padding:0;
-    width: 200px;
+    width: auto;
+    height: fit-content;
     background: #2f2f3290;
     text-align: center;
     border-radius: 35px;
-    
+    padding: 15px;
 }
 
 #emptyList {
@@ -84,8 +82,16 @@ li{
 }
 
 #search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500%;
+    margin: 0 auto;
+    gap: 20px;
     text-align: center;
     transform: translateY(40px);
+    margin-bottom: 20px;
 }
 
 #type {
@@ -109,16 +115,20 @@ ul#height, ul#weight {
 #typeInfo {
     background: #2f2f3290;
     text-align: center;
-    max-width: 250px;
+    width: auto;
     border-radius: 35px;
+    padding: 15px;
 }
 
 #weakness {
     padding:0;
 }
 
-h3 {
-    padding:10px
+#searchBtn {
+    cursor: pointer;
+}
+#searchBtn:hover {
+    background-color: #0056b3 ;
 }
 
 
